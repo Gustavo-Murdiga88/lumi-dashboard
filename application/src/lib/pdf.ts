@@ -5,11 +5,10 @@ import { ScrepperFormat } from "@/domain/dashboard/scrapper/formater";
 import { Keys } from "@/domain/dashboard/scrapper/keys";
 
 export const runtime = "nodejs";
+const pdf = new PDFExtract();
 
 export async function pdfExtrator(path: string) {
-	const pdf = new PDFExtract();
-
-	return new Promise((resolve, reject) => {
+	return new Promise<Keys>((resolve, reject) => {
 		pdf.extract(
 			path,
 			{

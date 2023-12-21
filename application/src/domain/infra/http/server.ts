@@ -7,7 +7,7 @@ import { pipeline } from "node:stream";
 import { promisify } from "node:util";
 import { randomUUID } from "node:crypto";
 import { resolve } from "node:path";
-import { pdfExtrator } from "../../../lib/pdf";
+import { pdfExtrator } from "@/lib/pdf";
 
 const pump = promisify(pipeline);
 
@@ -50,7 +50,7 @@ server.post("/invoces", async (request, reply) => {
 
 	reply.send({
 		path,
-		keys,
+		keys: keys.toObject(),
 	});
 });
 
