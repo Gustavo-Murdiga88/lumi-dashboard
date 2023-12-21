@@ -1,38 +1,10 @@
 import { PDFExtract } from "pdf.js-extract";
-import { textNormalized } from "@/core/normalized/normalized";
+import { Screpper } from "@/domain/dashboard/scrapper/screpper";
+import { keysMapper } from "@/core/const/keys-mappers";
+import { ScrepperFormat } from "@/domain/dashboard/scrapper/formater";
+import { Keys } from "@/domain/dashboard/scrapper/keys";
 
 export const runtime = "nodejs";
-
-const key_words = {
-	"energia-eletrica": {
-		skip: 2,
-		value: "",
-	},
-	"energia-compensada-gd-i": {
-		skip: 2,
-		value: "",
-	},
-	"contrib-ilum-publica-municipal": {
-		skip: 1,
-		value: "",
-	},
-	"energia-scee-s-icms": {
-		skip: 2,
-		value: "",
-	},
-	"n-do-cliente": {
-		skip: 2,
-		value: "",
-	},
-	"referente-a": {
-		skip: 3,
-		value: "",
-	},
-};
-
-type FormattedKeyType = {
-	[k in keyof typeof key_words]: k;
-}[keyof typeof key_words];
 
 export async function pdfExtrator(path: string) {
 	const pdf = new PDFExtract();
@@ -47,28 +19,20 @@ export async function pdfExtrator(path: string) {
 				if (err) {
 					reject(err);
 				}
-				const pdfExtract = data?.pages
-					.flatMap((page) =>
-						page.content.map((item) => textNormalized(item.str)),
-					)
-					.filter((item) => item !== "-" && item !== "");
 
-				pdfExtract?.forEach((item, index) => {
-					if (Object.hasOwn(key_words, item)) {
-						key_words[item as keyof typeof key_words].value =
-							pdfExtract[
-								index + key_words[item as keyof typeof key_words].skip
-							];
-					}
+				Screpper.Reader(data || null, keysMapper);
+				const formatted = ScrepperFormat.Format(keysMapper);
+				const keys = Keys.create({
+					"contrib-ilum-publica-municipal":
+						formatted["contrib-ilum-publica-municipal"] || "",
+					"energia-compensada-gd-i": formatted["energia-compensada-gd-i"] || "",
+					"energia-eletrica": formatted["energia-eletrica"] || "",
+					"energia-scee-s-icms": formatted["energia-scee-s-icms"] || "",
+					"n-do-cliente": formatted["n-do-cliente"] || "",
+					"referente-a": formatted["referente-a"] || "",
 				});
 
-				const formattedKeys: Partial<Record<FormattedKeyType, string>> = {};
-
-				Object.entries(key_words).forEach(([key, value]) => {
-					formattedKeys[key as FormattedKeyType] = value.value;
-				});
-
-				resolve(formattedKeys);
+				resolve(keys);
 			},
 		);
 	});
