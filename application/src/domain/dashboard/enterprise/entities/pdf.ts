@@ -15,6 +15,7 @@ export type PDFEntity = {
 	energiaSiICMS: number;
 	nClient: string;
 	referenteA: string;
+	pathAttach?: string;
 };
 
 export class PDF extends Entity<PDFEntity> {

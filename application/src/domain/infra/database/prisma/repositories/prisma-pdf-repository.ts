@@ -3,6 +3,7 @@ import { PDF } from "@/domain/dashboard/enterprise/entities/pdf";
 import { PrismaService } from "../prisma-service";
 import { PrismaPdfMapper } from "../mappers/prisma-pdf-mapper";
 import { ErrorInvoiceIdIsNotValid } from "@/core/errors/error-invoice-id-is-not-valid";
+import { Files } from "@/core/files/files";
 
 export class PrismaPdfRepository implements IPDFRepository {
 	private client: PrismaService;
@@ -35,6 +36,8 @@ export class PrismaPdfRepository implements IPDFRepository {
 				id,
 			},
 		});
+
+		await Files.deleteAttach(pdf.props.pathAttach);
 	}
 
 	async getStaticRouter(id: string): Promise<string> {

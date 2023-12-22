@@ -3,6 +3,7 @@ import { PDF, PDFEntity } from "@/domain/dashboard/enterprise/entities/pdf";
 import { PrismaService } from "../prisma-service";
 import { PrismaPdfMapper } from "../mappers/prisma-pdf-mapper";
 import { ErrorInvoiceIdIsNotValid } from "@/core/errors/error-invoice-id-is-not-valid";
+import { Files } from "@/core/files/files";
 
 export class PrismaLibInvoicesRepository implements ILibInvoicesRepository {
 	private client: PrismaService;
@@ -74,5 +75,7 @@ export class PrismaLibInvoicesRepository implements ILibInvoicesRepository {
 		if (!filePath?.id) {
 			throw new ErrorInvoiceIdIsNotValid();
 		}
+
+		await Files.deleteAttach(filePath.pathAttach);
 	}
 }

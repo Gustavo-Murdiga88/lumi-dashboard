@@ -11,13 +11,14 @@ datasource db {
 }
 
 model Invoices {
-  id              String @id @default(uuid())
+  id              String  @id @default(uuid())
   numClient       String
   mesRef          String
   energiaEletrica Int
   energiaICMS     Int
   energiaComp     Int
   contIlumPub     Int
+  pathAttach      String?
 
   @@map("invoices")
 }

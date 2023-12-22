@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import fsAsync from "node:fs/promises";
 import { pipeline } from "node:stream";
 import { promisify } from "node:util";
 import type { MultipartFile } from "@fastify/multipart";
@@ -10,6 +11,7 @@ import { ScrepperFormat } from "@/domain/dashboard/scrapper/formater";
 
 import { FilesMapper } from "../files/mapper";
 import { PDF } from "@/domain/dashboard/enterprise/entities/pdf";
+import { CannotFindPath } from "../errors/cannot-find-path";
 
 export const runtime = "nodejs";
 const pdf = new PDFExtract();
@@ -61,11 +63,28 @@ export class Files {
 					Screpper.Reader(data || null, keysMapper);
 					const formatted = ScrepperFormat.Format(keysMapper);
 
-					const pdf = PDF.create(FilesMapper.fromScrepperToPDF(formatted));
+					const pdf = PDF.create({
+						...FilesMapper.fromScrepperToPDF(formatted),
+						pathAttach: path,
+					});
 
 					resolve(pdf);
 				},
 			);
 		});
+	}
+
+	static async deleteAttach(path?: string | null) {
+		if (!path) {
+			throw new CannotFindPath();
+		}
+
+		const attachExist = await fsAsync.stat(path);
+
+		if (!attachExist) {
+			throw new CannotFindPath();
+		}
+
+		await fsAsync.unlink(path);
 	}
 }

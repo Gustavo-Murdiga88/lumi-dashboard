@@ -1,5 +1,5 @@
-export class CannotExecuteUseCaseError extends Error {
-	constructor(message: string) {
-		super(message);
+export class CannotFindPath extends Error {
+	constructor() {
+		super("Não foi possível encontrar este caminho");
 	}
 }

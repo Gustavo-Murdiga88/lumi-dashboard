@@ -21,6 +21,7 @@ export class PrismaPdfMapper {
 			energiaICMS: raw.props.energiaSiICMS * 100,
 			numClient: raw.props.nClient,
 			mesRef: raw.props.referenteA,
+			pathAttach: raw.props.pathAttach,
 		};
 	}
 }
