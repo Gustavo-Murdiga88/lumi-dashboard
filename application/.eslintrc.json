@@ -1,6 +1,7 @@
 {
   "extends":["@gm-dev/eslint-config/node"], 
   "rules": {
-  "no-shadow":"off"
+  "no-shadow":"off",
+  "no-restricted-syntax": "off"
   }
 }
