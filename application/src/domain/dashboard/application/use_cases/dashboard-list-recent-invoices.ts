@@ -1,3 +1,4 @@
+import { PrismaPdfMapper } from "@/domain/infra/database/prisma/mappers/prisma-pdf-mapper";
 import { IDashboardRepository } from "../repositories/dashboard-repository";
 
 export class ListRecentInvoicesUseCase {
@@ -10,6 +11,8 @@ export class ListRecentInvoicesUseCase {
 	async execute() {
 		const list = await this.repository.fetchRecent();
 
-		return list;
+		const httpList = list.map((item) => item.toHTTP());
+
+		return httpList;
 	}
 }

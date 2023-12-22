@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 import { IDashboardRepository } from "@/domain/dashboard/application/repositories/dashboard-repository";
 import { PDF, PDFEntity } from "@/domain/dashboard/enterprise/entities/pdf";
 import { PrismaService } from "../prisma-service";
@@ -13,8 +12,8 @@ export class PrismaDashboardRepository implements IDashboardRepository {
 
 	async fetchRecent(page: number, limit: number): Promise<PDF[]> {
 		const list = await this.client.invoices.findMany({
-			take: limit,
-			skip: page * limit,
+			take: limit ?? 10,
+			skip: (page ?? 0) * (limit ?? 10),
 		});
 
 		const pdfs = list.map(PrismaPdfMapper.toDomain);

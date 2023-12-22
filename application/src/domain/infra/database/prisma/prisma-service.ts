@@ -7,3 +7,5 @@ export class PrismaService extends PrismaClient {
 		});
 	}
 }
+
+export const prismaClient = new PrismaService();

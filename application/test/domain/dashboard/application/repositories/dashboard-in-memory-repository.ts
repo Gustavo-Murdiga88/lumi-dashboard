@@ -2,7 +2,7 @@ import { IDashboardRepository } from "@/domain/dashboard/application/repositorie
 import { PDF, PDFEntity } from "@/domain/dashboard/enterprise/entities/pdf";
 
 export class DashboardInMemoryRepository implements IDashboardRepository {
-	private pdfs: PDF[] = [];
+	pdfs: PDF[] = [];
 
 	async fetchRecent(
 		page?: number | undefined,
@@ -25,7 +25,10 @@ export class DashboardInMemoryRepository implements IDashboardRepository {
 					pdf.props.contribuiIlum === query.contribuiIlum ||
 					pdf.props.energiaSiICMS === query.energiaSiICMS ||
 					pdf.props.energiaGd === query.energiaGd ||
-					pdf.props.nClient === query.nClient,
+					pdf.props.nClient === query.nClient ||
+					pdf.props.energiaEletrica === query.energiaEletrica ||
+					pdf.props.pathAttach === query.pathAttach ||
+					pdf.props.referenteA === query.referenteA,
 			)
 			.slice(0, 10);
 		return list;

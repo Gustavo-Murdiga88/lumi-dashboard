@@ -1,12 +1,17 @@
 import { ErrorInvoiceIdIsNotValid } from "@/core/errors/error-invoice-id-is-not-valid";
+import { ErrorInvoicesNotAvailable } from "@/core/errors/error-invoices-not-available";
 import { ErrorWithPDFListPDF } from "@/core/errors/error-with-pdf";
 import { IPDFRepository } from "@/domain/dashboard/application/repositories/pdf-repository";
 import { PDF } from "@/domain/dashboard/enterprise/entities/pdf";
 
 export class PDFInMemoryRepository implements IPDFRepository {
-	private pdfs: PDF[] = [];
+	pdfs: PDF[] = [];
 
 	async createMany(pdfs: PDF[]): Promise<void> {
+		if (pdfs.length === 0) {
+			throw new ErrorInvoicesNotAvailable();
+		}
+
 		this.pdfs = [...this.pdfs, ...pdfs];
 	}
 

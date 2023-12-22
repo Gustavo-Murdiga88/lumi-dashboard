@@ -5,7 +5,7 @@ import { ILibInvoicesRepository } from "@/domain/dashboard/application/repositor
 import { PDF, PDFEntity } from "@/domain/dashboard/enterprise/entities/pdf";
 
 export class LibInvoicesMemoryRepository implements ILibInvoicesRepository {
-	private pdfs: PDF[] = [];
+	pdfs: PDF[] = [];
 
 	async fetchRecent(
 		page?: number | undefined,
@@ -28,7 +28,10 @@ export class LibInvoicesMemoryRepository implements ILibInvoicesRepository {
 					pdf.props.contribuiIlum === query.contribuiIlum ||
 					pdf.props.energiaSiICMS === query.energiaSiICMS ||
 					pdf.props.energiaGd === query.energiaGd ||
-					pdf.props.nClient === query.nClient,
+					pdf.props.nClient === query.nClient ||
+					pdf.props.energiaEletrica === query.energiaEletrica ||
+					pdf.props.pathAttach === query.pathAttach ||
+					pdf.props.referenteA === query.referenteA,
 			)
 			.slice(0, 10);
 
