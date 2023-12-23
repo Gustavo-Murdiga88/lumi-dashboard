@@ -54,7 +54,7 @@ export async function dashboardController(app: FastifyInstance) {
 			contribuiIlum: z.number().optional(),
 			energiaGd: z.number().optional(),
 			energiaEletrica: z.number().optional(),
-			energiaSiICMS: z.number().optional(),
+			energiaICMS: z.number().optional(),
 			nClient: z.string().optional(),
 			referenteA: z.string().optional(),
 		});

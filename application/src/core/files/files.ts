@@ -4,14 +4,14 @@ import { pipeline } from "node:stream";
 import { promisify } from "node:util";
 import type { MultipartFile } from "@fastify/multipart";
 import { PDFExtract } from "pdf.js-extract";
-import { Screpper } from "@/domain/dashboard/scrapper/screpper";
 import { keysMapper } from "@/core/const/keys-mappers";
-import { ScrepperFormat } from "@/domain/dashboard/scrapper/formater";
 
 import { FilesMapper } from "../files/mapper";
 import { PDF } from "@/domain/dashboard/enterprise/entities/pdf";
 import { CannotFindPath } from "../errors/cannot-find-path";
 import { dir } from "../dir";
+import { ScrepperFormat } from "./scrapper/formater";
+import { Screpper } from "./scrapper/screpper";
 
 export const runtime = "nodejs";
 const pdf = new PDFExtract();

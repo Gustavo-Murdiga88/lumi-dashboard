@@ -17,7 +17,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 10,
 				energiaEletrica: 20,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -26,7 +26,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 13,
 				energiaEletrica: 20,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -52,7 +52,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 10,
 				energiaEletrica: 20,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -61,7 +61,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 13,
 				energiaEletrica: 22,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -89,7 +89,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 10,
 				energiaEletrica: 20,
 				energiaGd: 20,
-				energiaSiICMS: 20,
+				energiaICMS: 20,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -99,7 +99,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 13,
 				energiaEletrica: 22,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -119,13 +119,13 @@ describe("list recent invoices", () => {
 		);
 	});
 
-	it("should be able get a recent invoices with filter energia energiaSiICMS", async () => {
+	it("should be able get a recent invoices with filter energia energiaICMS", async () => {
 		const pdf = [
 			PDF.create({
 				contribuiIlum: 10,
 				energiaEletrica: 20,
 				energiaGd: 20,
-				energiaSiICMS: 20,
+				energiaICMS: 20,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -135,7 +135,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 13,
 				energiaEletrica: 22,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -145,23 +145,23 @@ describe("list recent invoices", () => {
 		repository.pdfs = pdf;
 
 		const recents = await sut.execute({
-			energiaSiICMS: 20,
+			energiaICMS: 20,
 		});
 
 		expect(recents).toStrictEqual(expect.any(Array));
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
-			expect.arrayContaining([expect.objectContaining({ energiaSiICMS: 20 })]),
+			expect.arrayContaining([expect.objectContaining({ energiaICMS: 20 })]),
 		);
 	});
 
-	it("should be able get a recent invoices with filter energia energiaSiICMS", async () => {
+	it("should be able get a recent invoices with filter energia energiaICMS", async () => {
 		const pdf = [
 			PDF.create({
 				contribuiIlum: 10,
 				energiaEletrica: 20,
 				energiaGd: 20,
-				energiaSiICMS: 20,
+				energiaICMS: 20,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -171,7 +171,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 13,
 				energiaEletrica: 22,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2334",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -191,13 +191,13 @@ describe("list recent invoices", () => {
 		);
 	});
 
-	it("should be able get a recent invoices with filter energia energiaSiICMS", async () => {
+	it("should be able get a recent invoices with filter energia energiaICMS", async () => {
 		const pdf = [
 			PDF.create({
 				contribuiIlum: 10,
 				energiaEletrica: 20,
 				energiaGd: 20,
-				energiaSiICMS: 20,
+				energiaICMS: 20,
 				nClient: "2333",
 				referenteA: "nov10",
 				pathAttach: "/temp",
@@ -207,7 +207,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 13,
 				energiaEletrica: 22,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2334",
 				referenteA: "nov10",
 				pathAttach: "/temp2",
@@ -233,7 +233,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 10,
 				energiaEletrica: 20,
 				energiaGd: 20,
-				energiaSiICMS: 20,
+				energiaICMS: 20,
 				nClient: "2333",
 				referenteA: "nov2021",
 				pathAttach: "/temp",
@@ -243,7 +243,7 @@ describe("list recent invoices", () => {
 				contribuiIlum: 13,
 				energiaEletrica: 22,
 				energiaGd: 10,
-				energiaSiICMS: 10,
+				energiaICMS: 10,
 				nClient: "2334",
 				referenteA: "nov2023",
 				pathAttach: "/temp2",

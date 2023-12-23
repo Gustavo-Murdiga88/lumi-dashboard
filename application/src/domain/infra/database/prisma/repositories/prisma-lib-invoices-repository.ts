@@ -39,7 +39,7 @@ export class PrismaLibInvoicesRepository implements ILibInvoicesRepository {
 					gte: query.energiaEletrica,
 				},
 				energiaICMS: {
-					gte: query.energiaSiICMS,
+					gte: query.energiaICMS,
 				},
 				numClient: {
 					contains: query.nClient,

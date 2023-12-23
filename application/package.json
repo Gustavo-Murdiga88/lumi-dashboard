@@ -5,7 +5,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/domain/infra/http/server.ts",
+    "dev": "tsx watch src/domain/infra/http/entry.ts",
     "build:exec": "tsup src/entry.ts --format cjs,esm --dts --onSuccess \"node dist/index.js\"",
     "build": "tsup src/entry.ts --format cjs,esm --dts",
     "build:esm": "tsup src --format esm,cjs --dts",

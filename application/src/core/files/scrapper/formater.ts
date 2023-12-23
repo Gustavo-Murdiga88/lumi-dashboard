@@ -1,5 +1,5 @@
 import { KeyMapperValues } from "@/core/const/keys-mappers";
-import { KeysValues } from "../enterprise/entities/pdf";
+import { KeysValues } from "@/domain/dashboard/enterprise/entities/pdf";
 
 export type FormattedKeyType = {
 	[k in KeysValues]: string;

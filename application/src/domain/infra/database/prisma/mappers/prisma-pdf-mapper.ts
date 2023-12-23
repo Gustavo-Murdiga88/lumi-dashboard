@@ -8,7 +8,7 @@ export class PrismaPdfMapper {
 			contribuiIlum: raw.contIlumPub / 100,
 			energiaEletrica: raw.energiaEletrica / 100,
 			energiaGd: raw.energiaComp / 100,
-			energiaSiICMS: raw.energiaICMS / 100,
+			energiaICMS: raw.energiaICMS / 100,
 			nClient: raw.numClient,
 			referenteA: raw.mesRef,
 		});
@@ -19,7 +19,7 @@ export class PrismaPdfMapper {
 			contIlumPub: raw.props.contribuiIlum * 100,
 			energiaComp: raw.props.energiaGd * 100,
 			energiaEletrica: raw.props.energiaEletrica * 100,
-			energiaICMS: raw.props.energiaSiICMS * 100,
+			energiaICMS: raw.props.energiaICMS * 100,
 			numClient: raw.props.nClient,
 			mesRef: raw.props.referenteA,
 			pathAttach: raw.props.pathAttach,

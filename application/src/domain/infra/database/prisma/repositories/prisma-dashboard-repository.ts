@@ -41,7 +41,7 @@ export class PrismaDashboardRepository implements IDashboardRepository {
 					gte: query.energiaEletrica,
 				},
 				energiaICMS: {
-					gte: query.energiaSiICMS,
+					gte: query.energiaICMS,
 				},
 				numClient: {
 					contains: query.nClient,

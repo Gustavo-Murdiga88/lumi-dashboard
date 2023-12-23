@@ -23,7 +23,7 @@ export class DashboardInMemoryRepository implements IDashboardRepository {
 				(pdf) =>
 					pdf.id === query.id ||
 					pdf.props.contribuiIlum === query.contribuiIlum ||
-					pdf.props.energiaSiICMS === query.energiaSiICMS ||
+					pdf.props.energiaICMS === query.energiaICMS ||
 					pdf.props.energiaGd === query.energiaGd ||
 					pdf.props.nClient === query.nClient ||
 					pdf.props.energiaEletrica === query.energiaEletrica ||

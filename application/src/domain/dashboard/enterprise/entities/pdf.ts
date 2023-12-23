@@ -12,7 +12,7 @@ export type PDFEntity = {
 	contribuiIlum: number;
 	energiaGd: number;
 	energiaEletrica: number;
-	energiaSiICMS: number;
+	energiaICMS: number;
 	nClient: string;
 	referenteA: string;
 	pathAttach?: string;

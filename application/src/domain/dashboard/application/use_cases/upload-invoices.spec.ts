@@ -17,7 +17,7 @@ describe("invoices suit", () => {
 			contribuiIlum: 10,
 			energiaEletrica: 20,
 			energiaGd: 10,
-			energiaSiICMS: 10,
+			energiaICMS: 10,
 			nClient: "2333",
 			referenteA: "nov10",
 			pathAttach: "/temp",

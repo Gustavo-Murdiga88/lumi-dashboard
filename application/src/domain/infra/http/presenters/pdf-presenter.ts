@@ -7,7 +7,7 @@ export class PDFMapper {
 			contribuiIlum: raw.props.contribuiIlum,
 			energiaEletrica: raw.props.energiaEletrica,
 			energiaGd: raw.props.energiaGd,
-			energiaSiICMS: raw.props.energiaSiICMS,
+			energiaICMS: raw.props.energiaICMS,
 			nClient: raw.props.nClient,
 			referenteA: raw.props.referenteA,
 			id: raw.id,
