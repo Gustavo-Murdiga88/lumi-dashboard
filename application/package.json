@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/domain/infra/http/server.ts",
-    "build:exec": "tsup src/server.ts --format cjs,esm --dts --onSuccess \"node dist/index.js\"",
-    "build": "tsup src/server.ts --format cjs,esm --dts",
+    "build:exec": "tsup src/entry.ts --format cjs,esm --dts --onSuccess \"node dist/index.js\"",
+    "build": "tsup src/entry.ts --format cjs,esm --dts",
     "build:esm": "tsup src --format esm,cjs --dts",
     "test:e2e:watch": "vitest --config ./vitest.e2e.config.ts",
     "test:e2e": "vitest run --config ./vitest.e2e.config.ts",

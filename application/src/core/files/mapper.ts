@@ -3,7 +3,7 @@ import { FormattedKeyType } from "@/domain/dashboard/scrapper/formater";
 export class FilesMapper {
 	static fromScrepperToPDF(screpper: Partial<FormattedKeyType>) {
 		const month = screpper["referente-a"]?.slice(0, 3);
-		const year = screpper["referente-a"]?.slice(4);
+		const year = screpper["referente-a"]?.slice(3);
 
 		return {
 			contribuiIlum:

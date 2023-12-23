@@ -1,3 +1,4 @@
+import { PDFMapper } from "@/domain/infra/http/presenters/pdf-presenter";
 import {
 	IDashboardRepository,
 	QueryProps,
@@ -13,7 +14,7 @@ export class ListRecentWithFilterInvoicesUseCase {
 	async execute(query: QueryProps) {
 		const list = await this.repository.fetchRecentWithQuery(query);
 
-		const http = list.map((item) => item.toHTTP());
+		const http = list.map(PDFMapper.toHttp);
 
 		return http;
 	}

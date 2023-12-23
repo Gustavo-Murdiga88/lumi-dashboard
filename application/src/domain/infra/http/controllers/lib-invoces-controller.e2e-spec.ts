@@ -4,45 +4,28 @@ import { app } from "../server";
 import { Files } from "@/core/files/files";
 import { dir } from "@/core/dir";
 
-describe.sequential("Dashboard controller", async () => {
+describe.sequential("Lib controller", async () => {
 	const fastify = app();
-
 	beforeAll(async () => {
 		await fastify.ready();
 	});
 
 	afterAll(async () => {
-		fastify.close();
 		await deleteSchema();
+		fastify.close();
 	});
 
-	it("[POST]/dashboard/invoices", async () => {
+	it("[GET]/lib/invoices/list", async () => {
 		const path = `${dir}/test/e2e/pdf/3000055479-06-2023.pdf`;
 
-		const response = await client(fastify.server)
+		const pathResponse = await client(fastify.server)
 			.post("/dashboard/invoices")
 			.attach("files", path);
 
-		const attachPath = response.body.invoices[0].path;
+		const attachPath = pathResponse.body.invoices[0].path;
 
 		Files.deleteAttach(attachPath);
-
-		expect(response.status).toBe(201);
-		expect(response.body).toStrictEqual(
-			expect.objectContaining({
-				invoices: expect.arrayContaining([
-					expect.objectContaining({
-						path: expect.any(String),
-					}),
-				]),
-			}),
-		);
-	});
-
-	it("[GET]/dashboard/invoices/list", async () => {
-		const response = await client(fastify.server).get(
-			"/dashboard/invoices/list",
-		);
+		const response = await client(fastify.server).get("/lib/invoices/list");
 
 		expect(response.status).toBe(200);
 		expect(response.body).toStrictEqual(
@@ -56,9 +39,9 @@ describe.sequential("Dashboard controller", async () => {
 		);
 	});
 
-	it("[GET]/dashboard/invoices/list/filter", async () => {
+	it("[GET]/lib/invoices/list/filter", async () => {
 		const response = await client(fastify.server)
-			.get("/dashboard/invoices/list/filter")
+			.get("/lib/invoices/list/filter")
 			.query({
 				nClient: "7005",
 			});

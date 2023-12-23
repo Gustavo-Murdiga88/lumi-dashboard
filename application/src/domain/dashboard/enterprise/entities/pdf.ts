@@ -23,19 +23,6 @@ export class PDF extends Entity<PDFEntity> {
 		super(props);
 	}
 
-	toHTTP() {
-		return {
-			path: this.props.pathAttach,
-			contribuiIlum: this.props.contribuiIlum,
-			energiaEletrica: this.props.energiaEletrica,
-			energiaGd: this.props.energiaGd,
-			energiaSiICMS: this.props.energiaSiICMS,
-			nClient: this.props.nClient,
-			referenteA: this.props.referenteA,
-			id: this.id,
-		};
-	}
-
 	static create(obj: PDFEntity & { id?: string }) {
 		return new PDF(obj);
 	}

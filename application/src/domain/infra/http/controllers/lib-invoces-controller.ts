@@ -10,9 +10,11 @@ const listRecentWithFilterUsecase = makeLibListRecentInvoicesWithFilter();
 const deleteUsecase = makeDeleteInvoice();
 export async function libController(app: FastifyInstance) {
 	app.get("/invoices/list", async (req, reply) => {
-		await listRecentUsecase.execute();
+		const list = await listRecentUsecase.execute();
 
-		return reply.send({});
+		return reply.status(200).send({
+			invoices: list,
+		});
 	});
 
 	app.get("/invoices/list/filter", async (req, reply) => {
@@ -27,9 +29,11 @@ export async function libController(app: FastifyInstance) {
 
 		const query = scheme.parse(req.query);
 
-		await listRecentWithFilterUsecase.execute(query);
+		const list = await listRecentWithFilterUsecase.execute(query);
 
-		return reply;
+		return reply.status(200).send({
+			invoices: list,
+		});
 	});
 
 	app.delete("/invoice/:id", async (req, reply) => {
@@ -47,6 +51,6 @@ export async function libController(app: FastifyInstance) {
 
 		await deleteUsecase.execute(id);
 
-		return reply;
+		return reply.status(204).send();
 	});
 }

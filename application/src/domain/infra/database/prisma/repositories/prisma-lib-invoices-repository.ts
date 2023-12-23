@@ -12,10 +12,10 @@ export class PrismaLibInvoicesRepository implements ILibInvoicesRepository {
 		this.client = client;
 	}
 
-	async fetchRecent(page: number, limit: number): Promise<PDF[]> {
+	async fetchRecent(page?: number, limit?: number): Promise<PDF[]> {
 		const list = await this.client.invoices.findMany({
-			take: limit,
-			skip: page * limit,
+			take: limit || 10,
+			skip: (page || 0) * (limit || 0),
 		});
 
 		const pdfs = list.map(PrismaPdfMapper.toDomain);
@@ -27,6 +27,7 @@ export class PrismaLibInvoicesRepository implements ILibInvoicesRepository {
 		query: Partial<PDFEntity & { id: string }>,
 	): Promise<PDF[]> {
 		const list = await this.client.invoices.findMany({
+			take: 10,
 			where: {
 				contIlumPub: {
 					gte: query.contribuiIlum,

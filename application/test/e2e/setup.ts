@@ -8,7 +8,6 @@ const schemeId = randomUUID();
 
 config({
 	override: true,
-	debug: true,
 });
 
 function handleSchemeDataBase(id: string) {

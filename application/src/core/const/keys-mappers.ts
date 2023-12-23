@@ -1,4 +1,4 @@
-import { KeysValues } from "@/domain/dashboard/scrapper/keys";
+import { KeysValues } from "@/domain/dashboard/enterprise/entities/pdf";
 
 export type KeyMapperValues = {
 	[k in KeysValues]: {

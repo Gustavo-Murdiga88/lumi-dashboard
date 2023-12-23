@@ -42,11 +42,7 @@ describe("list recent invoices", () => {
 		expect(recents).toStrictEqual(expect.any(Array));
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
-			expect.arrayContaining([
-				expect.objectContaining({
-					props: expect.objectContaining({ contribuiIlum: 10 }),
-				}),
-			]),
+			expect.arrayContaining([expect.objectContaining({ contribuiIlum: 10 })]),
 		);
 	});
 
@@ -82,9 +78,7 @@ describe("list recent invoices", () => {
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
 			expect.arrayContaining([
-				expect.objectContaining({
-					props: expect.objectContaining({ energiaEletrica: 20 }),
-				}),
+				expect.objectContaining({ energiaEletrica: 20 }),
 			]),
 		);
 	});
@@ -121,11 +115,7 @@ describe("list recent invoices", () => {
 		expect(recents).toStrictEqual(expect.any(Array));
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
-			expect.arrayContaining([
-				expect.objectContaining({
-					props: expect.objectContaining({ energiaGd: 20 }),
-				}),
-			]),
+			expect.arrayContaining([expect.objectContaining({ energiaGd: 20 })]),
 		);
 	});
 
@@ -161,11 +151,7 @@ describe("list recent invoices", () => {
 		expect(recents).toStrictEqual(expect.any(Array));
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
-			expect.arrayContaining([
-				expect.objectContaining({
-					props: expect.objectContaining({ energiaSiICMS: 20 }),
-				}),
-			]),
+			expect.arrayContaining([expect.objectContaining({ energiaSiICMS: 20 })]),
 		);
 	});
 
@@ -201,11 +187,7 @@ describe("list recent invoices", () => {
 		expect(recents).toStrictEqual(expect.any(Array));
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
-			expect.arrayContaining([
-				expect.objectContaining({
-					props: expect.objectContaining({ nClient: "2333" }),
-				}),
-			]),
+			expect.arrayContaining([expect.objectContaining({ nClient: "2333" })]),
 		);
 	});
 
@@ -241,11 +223,7 @@ describe("list recent invoices", () => {
 		expect(recents).toStrictEqual(expect.any(Array));
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
-			expect.arrayContaining([
-				expect.objectContaining({
-					props: expect.objectContaining({ pathAttach: "/temp" }),
-				}),
-			]),
+			expect.arrayContaining([expect.objectContaining({ path: "/temp" })]),
 		);
 	});
 
@@ -282,9 +260,7 @@ describe("list recent invoices", () => {
 		expect(recents).toHaveLength(1);
 		expect(recents).toEqual(
 			expect.arrayContaining([
-				expect.objectContaining({
-					props: expect.objectContaining({ referenteA: "nov2021" }),
-				}),
+				expect.objectContaining({ referenteA: "nov2021" }),
 			]),
 		);
 	});
