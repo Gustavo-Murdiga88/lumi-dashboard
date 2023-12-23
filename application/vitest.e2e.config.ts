@@ -4,7 +4,8 @@ import PluginOptions from "vite-tsconfig-paths";
 export default defineConfig({
 	plugins: [PluginOptions()],
 	test: {
-		setupFiles: ["./test/e2e/vitest.e2e.setup.ts"],
+		setupFiles: "./test/e2e/setup.ts",
+		root: "./",
 		globals: true,
 		include: ["**/*.e2e-{test,spec}.ts"],
 	},

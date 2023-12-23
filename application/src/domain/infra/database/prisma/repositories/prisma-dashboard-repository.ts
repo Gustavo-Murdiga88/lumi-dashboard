@@ -16,6 +16,10 @@ export class PrismaDashboardRepository implements IDashboardRepository {
 			skip: (page ?? 0) * (limit ?? 10),
 		});
 
+		if (list.length === 0) {
+			return [];
+		}
+
 		const pdfs = list.map(PrismaPdfMapper.toDomain);
 
 		return pdfs;
@@ -25,6 +29,7 @@ export class PrismaDashboardRepository implements IDashboardRepository {
 		query: Partial<PDFEntity & { id: string }>,
 	): Promise<PDF[]> {
 		const list = await this.client.invoices.findMany({
+			take: 10,
 			where: {
 				contIlumPub: {
 					gte: query.contribuiIlum,

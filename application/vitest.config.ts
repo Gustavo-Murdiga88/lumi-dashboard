@@ -5,6 +5,7 @@ export default defineConfig({
 	plugins: [PluginOptions()],
 	test: {
 		globals: true,
+		root: "./",
 		include: ["**/*.{test,spec}.ts"],
 	},
 });

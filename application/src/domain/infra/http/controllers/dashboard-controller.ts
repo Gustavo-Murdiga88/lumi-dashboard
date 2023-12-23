@@ -36,15 +36,17 @@ export async function dashboardController(app: FastifyInstance) {
 			throw new ErrorWithPDFListPDF();
 		}
 
-		await uploadUsecase.execute(pdfList);
+		const list = await uploadUsecase.execute(pdfList);
 
-		return reply.send({});
+		return reply.code(201).send({ invoices: list });
 	});
 
 	app.get("/invoices/list", async (_, reply) => {
-		await listRecentUsecase.execute();
+		const list = await listRecentUsecase.execute();
 
-		return reply.send({});
+		return reply.status(200).send({
+			invoices: list,
+		});
 	});
 
 	app.get("/invoices/list/filter", async (req, reply) => {
@@ -59,8 +61,10 @@ export async function dashboardController(app: FastifyInstance) {
 
 		const query = scheme.parse(req.query);
 
-		await listRecentWithFilterUsecase.execute(query);
+		const list = await listRecentWithFilterUsecase.execute(query);
 
-		return reply.send({});
+		return reply.status(200).send({
+			invoices: list,
+		});
 	});
 }

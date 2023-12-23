@@ -25,6 +25,7 @@ export class PDF extends Entity<PDFEntity> {
 
 	toHTTP() {
 		return {
+			path: this.props.pathAttach,
 			contribuiIlum: this.props.contribuiIlum,
 			energiaEletrica: this.props.energiaEletrica,
 			energiaGd: this.props.energiaGd,

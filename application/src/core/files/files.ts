@@ -3,7 +3,6 @@ import fsAsync from "node:fs/promises";
 import { pipeline } from "node:stream";
 import { promisify } from "node:util";
 import type { MultipartFile } from "@fastify/multipart";
-import { resolve } from "node:path";
 import { PDFExtract } from "pdf.js-extract";
 import { Screpper } from "@/domain/dashboard/scrapper/screpper";
 import { keysMapper } from "@/core/const/keys-mappers";
@@ -12,19 +11,18 @@ import { ScrepperFormat } from "@/domain/dashboard/scrapper/formater";
 import { FilesMapper } from "../files/mapper";
 import { PDF } from "@/domain/dashboard/enterprise/entities/pdf";
 import { CannotFindPath } from "../errors/cannot-find-path";
+import { dir } from "../dir";
 
 export const runtime = "nodejs";
 const pdf = new PDFExtract();
 
 const pump = promisify(pipeline);
 
-const path = resolve(__dirname, "temp");
-
 export class Files {
-	static path: string = path;
+	static path: string = `${dir}/temp`;
 
 	static completePath(sufix: string) {
-		return this.path + sufix;
+		return `${this.path}/${sufix}`;
 	}
 
 	static existsDirectory(path?: string) {

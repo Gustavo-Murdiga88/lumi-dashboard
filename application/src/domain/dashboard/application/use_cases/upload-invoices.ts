@@ -10,5 +10,9 @@ export class UploadInvoicesUseCase {
 
 	async execute(files: PDF[]) {
 		await this.repository.createMany(files);
+
+		const list = files.map((file) => file.toHTTP());
+
+		return list;
 	}
 }

@@ -13,6 +13,8 @@ export class ListRecentWithFilterInvoicesUseCase {
 	async execute(query: QueryProps) {
 		const list = await this.repository.fetchRecentWithQuery(query);
 
-		return list;
+		const http = list.map((item) => item.toHTTP());
+
+		return http;
 	}
 }
