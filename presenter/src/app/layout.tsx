@@ -16,9 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang="pt-br">
+		<html
+			lang="en"
+			className="dark scrollbar-thin scrollbar-track-zinc-900 scrollbar-thumb-zinc-700"
+		>
 			<body
-				className={`${inter.className} font-roboto bg-zinc-900 text-zinc-100`}
+				className={`${inter.variable} bg-zinc-900 font-inter text-lg font-bold text-zinc-100 antialiased `}
 			>
 				{children}
 			</body>
