@@ -65,8 +65,8 @@ export function Sheet() {
 									"block rounded-md px-6 py-2 text-[14px] font-semibold leading-relaxed",
 									active === "Cadastros" && "bg-zinc-100 text-zinc-950",
 								)}
-								href="/cadastros"
-								aria-label="Cadastros"
+								href="/invoices"
+								aria-label="Faturas"
 							>
 								Faturas
 							</Link>

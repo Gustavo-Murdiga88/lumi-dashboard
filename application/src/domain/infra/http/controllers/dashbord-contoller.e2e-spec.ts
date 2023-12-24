@@ -12,8 +12,8 @@ describe.sequential("Dashboard controller", async () => {
 	});
 
 	afterAll(async () => {
-		fastify.close();
 		await deleteSchema();
+		fastify.close();
 	});
 
 	it("[POST]/dashboard/invoices", async () => {

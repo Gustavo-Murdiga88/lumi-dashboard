@@ -1,3 +1,6 @@
 {
-  "extends": ["@gm-dev/eslint-config/next"]
+  "extends": ["@gm-dev/eslint-config/next"], 
+  "rules": {
+    "no-restricted-syntax": "off"
+  }
 }

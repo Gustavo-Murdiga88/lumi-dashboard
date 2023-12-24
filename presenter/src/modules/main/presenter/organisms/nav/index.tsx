@@ -50,8 +50,8 @@ export function Nav() {
 								setActive("Cadastros");
 							}}
 							className="absolute inset-0 z-10 rounded-md px-6 py-1 text-[14px] font-semibold leading-relaxed"
-							href="/cadastros"
-							aria-label="Cadastros"
+							href="/invoices"
+							aria-label="invoices"
 						>
 							Faturas
 						</Link>

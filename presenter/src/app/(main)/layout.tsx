@@ -1,8 +1,8 @@
 import { Search } from "lucide-react";
 import { ReactNode } from "react";
-import { Nav } from "@/modules/dashboard/presenter/organisms/nav";
 import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/avatar/widget";
+import { Nav } from "@/modules/main/presenter/organisms/nav";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
 	return (
