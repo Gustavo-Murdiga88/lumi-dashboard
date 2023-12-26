@@ -6,9 +6,7 @@ import { dashboardController } from "./controllers/dashboard-controller";
 import { libController } from "./controllers/lib-invoces-controller";
 
 export function app() {
-	const server = fastify({
-		logger: true,
-	});
+	const server = fastify({});
 
 	server.register(cors);
 	server.register(file);

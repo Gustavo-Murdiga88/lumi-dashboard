@@ -10,7 +10,7 @@ export function Th({ className, children, ...props }: ITH) {
 		<th
 			{...props}
 			className={twMerge([
-				"py-2 last:w-14 overflow-hidden whitespace-nowrap text-ellipsis",
+				"py-2 last:w-14 overflow-hidden whitespace-nowrap text-ellipsis text-center",
 				className,
 			])}
 		>

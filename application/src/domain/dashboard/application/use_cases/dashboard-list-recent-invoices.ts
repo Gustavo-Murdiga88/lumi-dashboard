@@ -1,4 +1,3 @@
-import { PrismaPdfMapper } from "@/domain/infra/database/prisma/mappers/prisma-pdf-mapper";
 import { IDashboardRepository } from "../repositories/dashboard-repository";
 import { PDFMapper } from "@/domain/infra/http/presenters/pdf-presenter";
 
@@ -9,8 +8,8 @@ export class ListRecentInvoicesUseCase {
 		this.repository = repository;
 	}
 
-	async execute() {
-		const list = await this.repository.fetchRecent();
+	async execute({ limit, page }: { page?: number; limit?: number }) {
+		const list = await this.repository.fetchRecent(page, limit);
 
 		const httpList = list.map(PDFMapper.toHttp);
 

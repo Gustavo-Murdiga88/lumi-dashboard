@@ -4,6 +4,7 @@ import { PDF } from "@/domain/dashboard/enterprise/entities/pdf";
 export class PrismaPdfMapper {
 	static toDomain(raw: Invoices): PDF {
 		return PDF.create({
+			id: raw.id,
 			pathAttach: raw.pathAttach ?? "",
 			contribuiIlum: raw.contIlumPub / 100,
 			energiaEletrica: raw.energiaEletrica / 100,
@@ -16,10 +17,10 @@ export class PrismaPdfMapper {
 
 	static toPrisma(raw: PDF): Prisma.InvoicesCreateInput {
 		return {
-			contIlumPub: raw.props.contribuiIlum * 100,
-			energiaComp: raw.props.energiaGd * 100,
-			energiaEletrica: raw.props.energiaEletrica * 100,
-			energiaICMS: raw.props.energiaICMS * 100,
+			contIlumPub: raw.props.contribuiIlum,
+			energiaComp: raw.props.energiaGd,
+			energiaEletrica: raw.props.energiaEletrica,
+			energiaICMS: raw.props.energiaICMS,
 			numClient: raw.props.nClient,
 			mesRef: raw.props.referenteA,
 			pathAttach: raw.props.pathAttach,

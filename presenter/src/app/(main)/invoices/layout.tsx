@@ -5,6 +5,16 @@ export const metadata: Metadata = {
 	title: "Lumi | Faturas",
 };
 
-export default function InvoicesLayout({ children }: { children: ReactNode }) {
-	return <div>{children}</div>;
+export default function InvoicesLayout({
+	children,
+	register,
+}: {
+	children: ReactNode;
+	register: ReactNode;
+}) {
+	return (
+		<>
+			{children} {register}
+		</>
+	);
 }

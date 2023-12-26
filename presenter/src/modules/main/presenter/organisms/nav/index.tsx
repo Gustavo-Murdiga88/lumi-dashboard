@@ -3,11 +3,19 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Sheet } from "../sheet";
 
-type Active = "Dashboard" | "Cadastros" | "Gerar orçamento";
+type Active = "Dashboard" | "invoices";
 export function Nav() {
-	const [active, setActive] = useState<Active>("Dashboard");
+	const path = usePathname();
+
+	const [active, setActive] = useState<Active>(() => {
+		if (path === "/invoices") {
+			return "invoices";
+		}
+		return "Dashboard";
+	});
 
 	return (
 		<>
@@ -28,7 +36,7 @@ export function Nav() {
 							onClick={() => {
 								setActive("Dashboard");
 							}}
-							className="absolute inset-0 z-10 rounded-md px-6 py-1 text-[14px] font-semibold leading-relaxed"
+							className="absolute inset-0 z-10 text-center rounded-md px-6 py-1 text-[14px] font-semibold leading-relaxed"
 							href="/dashboard"
 							aria-label="Dashboard"
 						>
@@ -39,7 +47,7 @@ export function Nav() {
 						<span className="invisible px-6 py-1 text-[14px] font-semibold leading-relaxed">
 							Cadastros
 						</span>
-						{active === "Cadastros" && (
+						{active === "invoices" && (
 							<motion.div
 								layoutId="nav"
 								className="absolute inset-0 rounded-lg bg-zinc-950"
@@ -47,9 +55,9 @@ export function Nav() {
 						)}
 						<Link
 							onClick={() => {
-								setActive("Cadastros");
+								setActive("invoices");
 							}}
-							className="absolute inset-0 z-10 rounded-md px-6 py-1 text-[14px] font-semibold leading-relaxed"
+							className="absolute inset-0 text-center z-10 rounded-md px-6 py-1 text-[14px] font-semibold leading-relaxed"
 							href="/invoices"
 							aria-label="invoices"
 						>

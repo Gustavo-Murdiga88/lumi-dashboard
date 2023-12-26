@@ -1,32 +1,37 @@
 "use client";
 
-import { FormEvent, FormEventHandler, useState } from "react";
+import { FormEvent, useState } from "react";
 
 import { Cloud, File } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { revalidate } from "../actions/action";
 
-interface IFilesAttachment {
+export interface IFilesAttachment {
 	id: string;
 	file: File;
 }
+
 export function Form() {
+	const router = useRouter();
+
 	const [files, setFiles] = useState<IFilesAttachment[]>([]);
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		const formData = new FormData();
+		const form = new FormData();
 
 		files.forEach((file) => {
-			formData.append("files", file.file);
+			form.append("attachments", file.file, file.file.name);
 		});
-
 		const response = await fetch("http://localhost:3001/dashboard/invoices", {
 			method: "POST",
-			body: formData,
+			body: form,
 			cache: "no-store",
 		});
 
 		if (response.ok) {
-			console.log("Enviado");
+			revalidate();
+			router.back();
 		}
 	}
 
@@ -44,13 +49,11 @@ export function Form() {
 			file: files[index],
 		}));
 
-		event.currentTarget.files = files;
 		setFiles(filesList);
 	}
 
 	return (
 		<form
-			id="attachments"
 			onSubmit={handleSubmit}
 			className="flex flex-col gap-4 p-2 border border-zinc-300 rounded-md mt-4"
 		>
@@ -96,8 +99,9 @@ export function Form() {
 					</ul>
 				</label>
 				<button
-					className="w-[250px] p-2 hover:bg-zinc-300 hover:text-zinc-900 transition-all rounded-md border border-zinc-200 "
+					className="w-[250px] disabled:opacity-35 disabled:pointer-events-none p-2 hover:bg-zinc-300 hover:text-zinc-900 transition-all rounded-md border border-zinc-200 "
 					type="submit"
+					disabled={files.length === 0}
 				>
 					Enviar aquivos
 				</button>
