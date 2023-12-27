@@ -4,9 +4,9 @@ Olá, sejam bem vindos a conclusão do teste prático da Labs-Lumi.
 
 ## Apresentação
 
-  - Este projeto contempla duas pastas principais que são responsáveis pelo font-end(Presenter) e back-end(application)
+  - Este projeto contempla duas pastas principais que são responsáveis pelo front-end(Presenter) e back-end(application)
 
-  - Para iniciar o projeto e necessário ter o NodeJs na versão LTS e o Docker instalado em sua máquina.
+  - Para iniciar o projeto é necessário ter o NodeJs na versão LTS e o Docker instalado em sua máquina.
 
   ### Inicio
   - Realize o download do repo no github:
