@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +12,14 @@ export function Footer({
 	hasNextPage: boolean;
 }) {
 	const pagination = useRef(0);
+
+	useEffect(
+		() => () => {
+			fetchPage(0);
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[],
+	);
 
 	return (
 		<footer className="flex items-center justify-end p-4">

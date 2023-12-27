@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Table } from "@/components/table";
 import { Menu } from "@/components/menu/widget";
 import { MenuItem } from "@/components/menu/menu-item";
@@ -80,11 +81,18 @@ export function TableInvoices({
 								>
 									<div className="flex items-center justify-center">
 										<Menu>
-											<MenuItem onClick={() => deleteInvoice(invoice.id)}>
-												Deletar
+											<MenuItem>
+												<Link
+													className="w-full"
+													href={invoice.path ?? ""}
+													target="_blank"
+													aria-label="Visualizar"
+												>
+													Visualizar
+												</Link>
 											</MenuItem>
 											<MenuItem onClick={() => deleteInvoice(invoice.id)}>
-												Visualizar
+												Deletar
 											</MenuItem>
 										</Menu>
 									</div>

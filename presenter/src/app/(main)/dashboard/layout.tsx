@@ -6,5 +6,6 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
-	return <div>{children}</div>;
+	// eslint-disable-next-line react/jsx-no-useless-fragment
+	return <>{children}</>;
 }

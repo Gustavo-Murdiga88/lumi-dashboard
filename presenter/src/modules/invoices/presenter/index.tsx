@@ -28,13 +28,13 @@ export default async function dashboard() {
 	);
 
 	const listFommatted = list.invoices.map((item) => ({
-		contribuiIlum: format.format(item.contribuiIlum / 100),
+		contribuiIlum: format.format(item.contribuiIlum),
 		energiaEletrica: format.format(item.energiaEletrica),
 		energiaGd: format.format(item.energiaGd),
 		energiaICMS: format.format(item.energiaICMS),
 		nClient: item.nClient,
 		id: item.id,
-		path: item.path,
+		path: `http://localhost:3001/lib/invoice/download/${item.id}`,
 		referenteA: dateFormat(item.referenteA),
 	}));
 
@@ -66,7 +66,12 @@ export default async function dashboard() {
 			</header>
 			<main className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr]">
 				<TableInvoices invoices={listFommatted} />
-				<Footer fetchPage={paginate} hasNextPage={list.invoices.length >= 10} />
+				{listFommatted.length > 0 && (
+					<Footer
+						fetchPage={paginate}
+						hasNextPage={list.invoices.length >= 10}
+					/>
+				)}
 			</main>
 		</>
 	);

@@ -4,7 +4,6 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import type { IInvoicesProps } from "..";
 
 export async function revalidate(path?: string) {
-	revalidatePath(path ?? "/", "layout");
 	revalidateTag("list");
 }
 

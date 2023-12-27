@@ -20,10 +20,10 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 					</Button>
 
 					<div className="flex items-center gap-4">
-						<span className="text-[12px] font-semibold">Gm Dev</span>
+						<span className="text-[12px] font-semibold">Lumi Dashboard</span>
 						<Avatar
-							src="https://github.com/gustavo-murdiga88.png"
-							alt="Gustavo Murdiga"
+							src="https://uploads-ssl.webflow.com/62f9249c43126cafce10bc33/62fd12497ffcb83b28ea3309_logo-lumi-white.svg"
+							alt="Lumi"
 						/>
 					</div>
 				</div>
