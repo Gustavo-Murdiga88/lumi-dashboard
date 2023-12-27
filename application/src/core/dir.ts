@@ -1,3 +1,8 @@
-import { resolve } from "path";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
-export const dir = resolve(__dirname, "..", "..");
+const __filePath = fileURLToPath(import.meta.url);
+
+const __dirname = resolve(dirname(__filePath), "..", "..");
+
+export const dir = __dirname;

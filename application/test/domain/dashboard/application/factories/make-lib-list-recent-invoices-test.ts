@@ -1,9 +1,9 @@
 import { ListRecentInvoicesUseCase } from "@/domain/dashboard/application/use_cases/dashboard-list-recent-invoices";
-import { LibInvoicesMemoryRepository } from "../repositories/lib-invoices-in-memory-repository";
-import { ILibInvoicesRepository } from "@/domain/dashboard/application/repositories/lib-invoices-repository";
+import { DashboardInMemoryRepository } from "../repositories/dashboard-in-memory-repository";
+import { IDashboardRepository } from "@/domain/dashboard/application/repositories/dashboard-repository";
 
 export function makeLibListRecentInvoicesTest() {
-	const repository: ILibInvoicesRepository = new LibInvoicesMemoryRepository();
+	const repository: IDashboardRepository = new DashboardInMemoryRepository();
 	const usecase = new ListRecentInvoicesUseCase(repository);
 
 	return usecase;

@@ -1,10 +1,10 @@
-import { PrismaLibInvoicesRepository } from "@/domain/infra/database/prisma/repositories/prisma-lib-invoices-repository";
-import { ILibInvoicesRepository } from "../repositories/lib-invoices-repository";
+import { PrismaDashboardRepository } from "@/domain/infra/database/prisma/repositories/prisma-dashboard-repository";
+import { IDashboardRepository } from "../repositories/dashboard-repository";
 import { ListRecentWithFilterInvoicesUseCase } from "../use_cases/dashboard-list-recent-with-filter";
 import { prismaClient } from "@/domain/infra/database/prisma/prisma-service";
 
 export function makeLibListRecentInvoicesWithFilter() {
-	const repository: ILibInvoicesRepository = new PrismaLibInvoicesRepository(
+	const repository: IDashboardRepository = new PrismaDashboardRepository(
 		prismaClient,
 	);
 	const usecase = new ListRecentWithFilterInvoicesUseCase(repository);

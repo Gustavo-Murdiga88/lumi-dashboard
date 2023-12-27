@@ -1,8 +1,8 @@
 {
   "name": "lumi-dashboard-application",
   "version": "1.0.0",
-  "description": "",
-  "type": "commonjs",
+  "description": "an test for me",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/domain/infra/http/entry.ts",

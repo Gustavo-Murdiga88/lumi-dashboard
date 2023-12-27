@@ -14,8 +14,8 @@ export function Modal({
 	const router = useRouter();
 
 	return (
-		<section className="fixed inset-0 z-10 flex  items-center justify-center bg-zinc-/15 backdrop-blur-sm">
-			<main className="bg-zinc-800 p-4 rounded-md relative">
+		<section className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur-sm p-4">
+			<main className="bg-zinc-800 h-full w-full p-4 flex flex-col rounded-md relative md:h-auto md:w-auto">
 				<button
 					onClick={() => router.back()}
 					type="button"
@@ -27,7 +27,9 @@ export function Modal({
 				<header className="relative min-w-full px-3 py-4">
 					<h1>{title}</h1>
 				</header>
-				<div className="min-w-[800px]">{children}</div>
+				<div className="w-auto md:min-w-[600px] lg:min-w-[800px]">
+					{children}
+				</div>
 			</main>
 		</section>
 	);

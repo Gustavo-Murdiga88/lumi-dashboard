@@ -52,7 +52,7 @@ export default async function dashboard() {
 
 	return (
 		<>
-			<header className="flex items-center justify-between">
+			<header className="flex items-start justify-start flex-col gap-4 md:flex-row md:items-center md:justify-between">
 				<h1 className="text-[32px] font-semibold leading-relaxed">
 					Histórico de faturas
 				</h1>

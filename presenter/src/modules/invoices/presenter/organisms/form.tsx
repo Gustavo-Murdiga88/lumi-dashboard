@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 import { Cloud, File } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { revalidate } from "../actions/action";
+import { Button } from "./button";
 
 export interface IFilesAttachment {
 	id: string;
@@ -55,13 +56,13 @@ export function Form() {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="flex flex-col gap-4 p-2 border border-zinc-300 rounded-md mt-4"
+			className="border border-zinc-300 rounded-md mt-4"
 		>
 			<div className="flex flex-col gap-5 p-4">
 				<h1 className="text-[16px]">Envie sua faturas para análise</h1>
 				<label
 					htmlFor="files"
-					className="p-2 cursor-pointer w-full border-dashed min-h-[150px] max-h-[300px] overflow-auto scrollbar-thin scrollbar-track-zinc-900 scrollbar-thumb-zinc-700 text-[14px] items-center border border-zinc-200 rounded-md  flex justify-between"
+					className="p-2 cursor-pointer border-dashed min-h-[150px] max-h-[300px] overflow-auto scrollbar-thin scrollbar-track-zinc-900 scrollbar-thumb-zinc-700 text-[14px] items-center border border-zinc-200 rounded-md  flex justify-between"
 				>
 					<span className="sr-only">Selecione um arquivo</span>
 					<input
@@ -98,13 +99,7 @@ export function Form() {
 							))}
 					</ul>
 				</label>
-				<button
-					className="w-[250px] disabled:opacity-35 disabled:pointer-events-none p-2 hover:bg-zinc-300 hover:text-zinc-900 transition-all rounded-md border border-zinc-200 "
-					type="submit"
-					disabled={files.length === 0}
-				>
-					Enviar aquivos
-				</button>
+				<Button disabled={files.length === 0} />
 			</div>
 		</form>
 	);
