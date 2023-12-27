@@ -24,7 +24,7 @@ Olá, sejam bem vindos a conclusão do teste prático da Labs-Lumi.
   
     ![Apresentação](./attachs/structure.png)
   
-  - Após este passo ser concluído, devemos entrar em cada uma das pastas principais e realizar a instalação das dependências
+  - Em seguida devemos entrar em cada uma das pastas principais e realizar a instalação das dependências
 
     ````shell
     cd /presenter
@@ -41,7 +41,7 @@ Olá, sejam bem vindos a conclusão do teste prático da Labs-Lumi.
   <br/>
 
   ## Executar as migrations do prisma (BACK-END)
-  - Após o processo a cima, será necessário executar as migrations do banco de dados e para isso, precisamos executar nosso container do docker. Este projeto contempla uma configuração já realizada em um arquivo 'docker-compose.yml' na raiz do mesmo.
+  - Depois do processo a cima, será necessário executar as migrations do banco de dados e para isso, precisamos executar nosso container do docker. Este projeto contempla uma configuração já realizada em um arquivo 'docker-compose.yml' na raiz do mesmo.
 
   - Para que possamos executar container basta irmos até a pasta /application do projeto e executar:
  
@@ -76,7 +76,7 @@ Olá, sejam bem vindos a conclusão do teste prático da Labs-Lumi.
 
   ```
 
-  - Após este processo seu servidor estará disponível e você recebera uma mensagem em seu terminal que se parece com esta:
+  - Posteriormente este processo seu servidor estará disponível e você receberá uma mensagem em seu terminal que se parece com esta:
     
   ![Alt text](/attachs/server.png)
 
@@ -91,7 +91,7 @@ Olá, sejam bem vindos a conclusão do teste prático da Labs-Lumi.
   pnpm run dev
 
   ```
-  - Após este processo você receberá uma mensagem em seu terminal indicando em qual endereço o projeto esta sendo executado. Ex:
+  - Em seguida este processo você receberá uma mensagem em seu terminal indicando em qual endereço o projeto esta sendo executado. Ex:
 
   ![Server](/attachs//next-server.png)
 
@@ -111,3 +111,32 @@ Olá, sejam bem vindos a conclusão do teste prático da Labs-Lumi.
     ![biblioteca-preview](/attachs/lib.png)
 
     
+
+  ## Testes 
+  - Para executar os teste de unidade e testes de integração sigas os passos a seguir.
+  
+  - Testes de unidade
+    ```shell
+    cd /application
+
+    pnpm run test
+
+    ## or
+
+    pnpm run test:watch
+
+    ```
+  - Teste e2e 
+    
+    - Para realizar estes testes se é necessário ter o nosso container do docker online então para que seja possível realizar estes testes execute:
+
+    ```shell 
+    docker compose up -d 
+
+    pnpm run test:e2e
+
+    ## or
+
+    pnpm run test:e2e:watch
+
+    ``` 
