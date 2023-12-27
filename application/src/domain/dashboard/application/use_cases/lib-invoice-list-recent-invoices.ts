@@ -1,3 +1,4 @@
+import { PDFMapper } from "@/domain/infra/http/presenters/pdf-presenter";
 import { ILibInvoicesRepository } from "../repositories/lib-invoices-repository";
 
 export class LibListInvoicesRecentUseCase {
@@ -7,9 +8,11 @@ export class LibListInvoicesRecentUseCase {
 		this.repository = repository;
 	}
 
-	async execute() {
-		const list = await this.repository.fetchRecent();
+	async execute({ limit, page }: { page?: number; limit?: number }) {
+		const list = await this.repository.fetchRecent(page, limit);
 
-		return list;
+		const pdfs = list.map(PDFMapper.toHttp);
+
+		return pdfs;
 	}
 }

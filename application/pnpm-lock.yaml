@@ -11,6 +11,9 @@ dependencies:
   '@fastify/multipart':
     specifier: ^8.0.0
     version: 8.0.0
+  '@fastify/static':
+    specifier: ^6.12.0
+    version: 6.12.0
   '@prisma/client':
     specifier: ^5.7.1
     version: 5.7.1(prisma@5.7.1)

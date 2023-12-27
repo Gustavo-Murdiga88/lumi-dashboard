@@ -25,7 +25,7 @@ describe.sequential("Lib controller", async () => {
 		const attachPath = pathResponse.body.invoices[0].path;
 
 		Files.deleteAttach(attachPath);
-		const response = await client(fastify.server).get("/lib/invoices/list");
+		const response = await client(fastify.server).get("/lib/invoices/list/");
 
 		expect(response.status).toBe(200);
 		expect(response.body).toStrictEqual(
@@ -40,8 +40,17 @@ describe.sequential("Lib controller", async () => {
 	});
 
 	it("[GET]/lib/invoices/list/filter", async () => {
+		const path = `${dir}/test/e2e/pdf/3000055479-06-2023.pdf`;
+
+		const pathResponse = await client(fastify.server)
+			.post("/dashboard/invoices")
+			.attach("files", path);
+
+		const attachPath = pathResponse.body.invoices[0].path;
+
+		Files.deleteAttach(attachPath);
 		const response = await client(fastify.server)
-			.get("/lib/invoices/list/filter")
+			.get("/lib/invoices/list/filter/")
 			.query({
 				nClient: "7005",
 			});

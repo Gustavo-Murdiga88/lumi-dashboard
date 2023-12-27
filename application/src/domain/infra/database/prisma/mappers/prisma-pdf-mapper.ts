@@ -17,6 +17,7 @@ export class PrismaPdfMapper {
 
 	static toPrisma(raw: PDF): Prisma.InvoicesCreateInput {
 		return {
+			id: raw.id,
 			contIlumPub: raw.props.contribuiIlum,
 			energiaComp: raw.props.energiaGd,
 			energiaEletrica: raw.props.energiaEletrica,

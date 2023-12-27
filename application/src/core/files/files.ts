@@ -46,7 +46,7 @@ export class Files {
 		await pump(file, fs.createWriteStream(path ?? this.path));
 	}
 
-	static async pdfExtrator(path: string) {
+	static async pdfExtrator(path: string, id: string) {
 		return new Promise<PDF>((resolve, reject) => {
 			pdf.extract(
 				path,
@@ -62,6 +62,7 @@ export class Files {
 					const formatted = ScrepperFormat.Format(keysMapper);
 
 					const pdf = PDF.create({
+						id,
 						...FilesMapper.fromScrepperToPDF(formatted),
 						pathAttach: path,
 					});

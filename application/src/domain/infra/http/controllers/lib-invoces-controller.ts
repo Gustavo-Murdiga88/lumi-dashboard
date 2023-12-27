@@ -9,6 +9,16 @@ const listRecentUsecase = makeLibListRecentInvoices();
 const listRecentWithFilterUsecase = makeLibListRecentInvoicesWithFilter();
 const deleteUsecase = makeDeleteInvoice();
 export async function libController(app: FastifyInstance) {
+	app.get("/invoice/download/:id", async (req, reply) => {
+		const scheme = z.object({
+			id: z.string().uuid(),
+		});
+
+		const { id } = scheme.parse(req.params);
+
+		return reply.sendFile(`invoice-${id}.pdf`);
+	});
+
 	app.get("/invoices/list/", async (req, reply) => {
 		const scheme = z.object({
 			page: z.coerce.number().optional().default(0),
@@ -17,10 +27,10 @@ export async function libController(app: FastifyInstance) {
 
 		const query = scheme.parse(req.query);
 
-		const list = await listRecentUsecase.execute(query);
+		const invoices = await listRecentUsecase.execute(query);
 
 		return reply.status(200).send({
-			invoices: list,
+			invoices,
 		});
 	});
 

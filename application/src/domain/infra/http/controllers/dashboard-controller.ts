@@ -19,7 +19,8 @@ export async function dashboardController(app: FastifyInstance) {
 		const pdfList: PDF[] = [];
 
 		for await (const file of files) {
-			const nameFile = `invoce-${randomUUID()}.${file?.type}`;
+			const id = randomUUID();
+			const nameFile = `invoice-${id}.${file.mimetype.split("/")[1]}`;
 
 			await Files.existsDirectory();
 
@@ -27,7 +28,7 @@ export async function dashboardController(app: FastifyInstance) {
 
 			await Files.createFile(file.file, path_complete);
 
-			const key = await Files.pdfExtrator(path_complete);
+			const key = await Files.pdfExtrator(path_complete, id);
 
 			pdfList.push(key);
 		}
@@ -48,10 +49,11 @@ export async function dashboardController(app: FastifyInstance) {
 		});
 
 		const query = scheme.parse(req.query);
-		const list = await listRecentUsecase.execute(query);
+		const { invoices, sum } = await listRecentUsecase.execute(query);
 
 		return reply.status(200).send({
-			invoices: list,
+			invoices,
+			sum,
 		});
 	});
 

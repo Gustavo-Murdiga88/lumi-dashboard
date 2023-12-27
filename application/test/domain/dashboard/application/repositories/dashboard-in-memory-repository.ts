@@ -7,12 +7,43 @@ export class DashboardInMemoryRepository implements IDashboardRepository {
 	async fetchRecent(
 		page?: number | undefined,
 		limit?: number | undefined,
-	): Promise<PDF[]> {
+	): Promise<{
+		pdfs: PDF[];
+		sum: {
+			contIlumPub: number;
+			energiaComp: number;
+			energiaEletrica: number;
+			energiaICMS: number;
+		};
+	}> {
 		const take = limit || 10;
 		const skip = page || 0 * take;
-		const list = this.pdfs.slice(skip, take);
+		const pdfs = this.pdfs.slice(skip, take);
 
-		return list;
+		const sum = this.pdfs.reduce<{
+			contIlumPub: number;
+			energiaComp: number;
+			energiaEletrica: number;
+			energiaICMS: number;
+		}>(
+			(acc, pdf) => ({
+				contIlumPub: acc.contIlumPub + pdf.props.contribuiIlum,
+				energiaComp: acc.energiaComp + pdf.props.energiaGd,
+				energiaEletrica: acc.energiaEletrica + pdf.props.energiaEletrica,
+				energiaICMS: acc.energiaICMS + pdf.props.energiaICMS,
+			}),
+			{
+				contIlumPub: 0,
+				energiaEletrica: 0,
+				energiaICMS: 0,
+				energiaComp: 0,
+			},
+		);
+
+		return {
+			pdfs,
+			sum,
+		};
 	}
 
 	async fetchRecentWithQuery(

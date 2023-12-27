@@ -35,11 +35,11 @@ describe("list recent invoices", () => {
 
 		repository.pdfs = pdf;
 
-		const recents = await sut.execute();
+		const recents = await sut.execute({ limit: 10, page: 0 });
 
-		expect(recents).toStrictEqual(expect.any(Array));
-		expect(recents).toHaveLength(2);
-		expect(recents).toEqual(
+		expect(recents.invoices).toStrictEqual(expect.any(Array));
+		expect(recents.invoices).toHaveLength(2);
+		expect(recents.invoices).toEqual(
 			expect.arrayContaining([
 				expect.objectContaining({ contribuiIlum: 13 }),
 				expect.objectContaining({ contribuiIlum: 13 }),

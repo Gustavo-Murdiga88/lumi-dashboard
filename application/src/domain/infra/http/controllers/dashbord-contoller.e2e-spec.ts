@@ -41,7 +41,7 @@ describe.sequential("Dashboard controller", async () => {
 
 	it("[GET]/dashboard/invoices/list", async () => {
 		const response = await client(fastify.server).get(
-			"/dashboard/invoices/list",
+			"/dashboard/invoices/list/",
 		);
 
 		expect(response.status).toBe(200);
@@ -58,7 +58,7 @@ describe.sequential("Dashboard controller", async () => {
 
 	it("[GET]/dashboard/invoices/list/filter", async () => {
 		const response = await client(fastify.server)
-			.get("/dashboard/invoices/list/filter")
+			.get("/dashboard/invoices/list/filter/")
 			.query({
 				nClient: "7005",
 			});

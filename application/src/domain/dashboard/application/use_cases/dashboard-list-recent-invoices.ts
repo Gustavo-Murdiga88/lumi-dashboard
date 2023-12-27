@@ -11,8 +11,11 @@ export class ListRecentInvoicesUseCase {
 	async execute({ limit, page }: { page?: number; limit?: number }) {
 		const list = await this.repository.fetchRecent(page, limit);
 
-		const httpList = list.map(PDFMapper.toHttp);
+		const httpList = list.pdfs.map(PDFMapper.toHttp);
 
-		return httpList;
+		return {
+			invoices: httpList,
+			sum: list.sum,
+		};
 	}
 }

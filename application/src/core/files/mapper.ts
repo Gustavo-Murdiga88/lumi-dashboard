@@ -6,8 +6,7 @@ export class FilesMapper {
 		const year = screpper["referente-a"]?.slice(3);
 
 		return {
-			contribuiIlum:
-				Number(screpper["contrib-ilum-publica-municipal"] || 0) * 100,
+			contribuiIlum: Number(screpper["contrib-ilum-publica-municipal"] || 0),
 			energiaGd: Number(screpper["energia-compensada-gd-i"] || 0) * 100,
 			energiaEletrica: Number(screpper["energia-eletrica"] || 0) * 100,
 			energiaICMS: Number(screpper["energia-scee-s-icms"] || 0) * 100,
