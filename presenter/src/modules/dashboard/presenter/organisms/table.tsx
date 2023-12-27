@@ -21,6 +21,19 @@ export function TableDashboard({
 }: {
 	invoices: IInvoicesPropsFormatted[];
 }) {
+	if (!invoices || invoices?.length === 0) {
+		return (
+			<aside className="flex flex-col flex-1 min-h-[300px]">
+				<h1 className="mt-5">Ultimas faturas lançadas</h1>
+				<div className="flex-1 flex items-center justify-center">
+					<strong className=" block text-[18px] font-semibold ">
+						Nenhuma Fatura lançada até o momento 😭
+					</strong>
+				</div>
+			</aside>
+		);
+	}
+
 	return (
 		<div className="overflow-auto">
 			<Table.Root className="w-full text-center min-w-[900px] text-[12px] lg:w-full">
