@@ -1,4 +1,4 @@
-import { DashboardInMemoryRepository } from "test/domain/dashboard/application/repositories/dashboard-in-memory-repository";
+import { DashboardInMemoryRepository } from "test/repositories/dashboard-in-memory-repository";
 import { PDF } from "../../enterprise/entities/pdf";
 import { ListRecentWithFilterInvoicesUseCase } from "./dashboard-list-recent-with-filter";
 

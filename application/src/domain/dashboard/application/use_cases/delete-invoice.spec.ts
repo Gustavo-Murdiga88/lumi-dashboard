@@ -1,4 +1,4 @@
-import { LibInvoicesMemoryRepository } from "test/domain/dashboard/application/repositories/lib-invoices-in-memory-repository";
+import { LibInvoicesMemoryRepository } from "test/repositories/lib-invoices-in-memory-repository";
 import { PDF } from "../../enterprise/entities/pdf";
 import { DeleteInvoiceUseCase } from "./delete-invoice";
 import { ErrorInvoiceNotFound } from "@/core/errors/error-invoice-not-found";

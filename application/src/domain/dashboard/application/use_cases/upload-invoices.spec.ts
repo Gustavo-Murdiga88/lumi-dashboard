@@ -1,4 +1,4 @@
-import { PDFInMemoryRepository } from "test/domain/dashboard/application/repositories/pdf-in-memory-repository";
+import { PDFInMemoryRepository } from "test/repositories/pdf-in-memory-repository";
 import { UploadInvoicesUseCase } from "./upload-invoices";
 import { PDF } from "../../enterprise/entities/pdf";
 import { ErrorInvoicesNotAvailable } from "@/core/errors/error-invoices-not-available";

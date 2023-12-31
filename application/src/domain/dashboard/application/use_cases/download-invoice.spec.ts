@@ -1,4 +1,4 @@
-import { LibInvoicesMemoryRepository } from "test/domain/dashboard/application/repositories/lib-invoices-in-memory-repository";
+import { LibInvoicesMemoryRepository } from "test/repositories/lib-invoices-in-memory-repository";
 import { PDF } from "../../enterprise/entities/pdf";
 import { DownloadInvoiceUseCase } from "./download-invoice";
 import { ErrorInvoiceIdIsNotValid } from "@/core/errors/error-invoice-id-is-not-valid";
